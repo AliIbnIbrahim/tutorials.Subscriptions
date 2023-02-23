@@ -66,49 +66,38 @@ Use of the subscription mechanism will therefore reduce both the volume of reque
 
 The relationship between our entities is defined as shown:
 
-![](https://fiware.github.io/tutorials.Subscriptions/img/entities.png)
+![](https://github.com/AliIbnIbrahim/tutorials.Subscriptions/blob/master/images/entities.png)
 
 ## Stock Management frontend
 
-In the previous [tutorial](https://github.com/FIWARE/tutorials.Accessing-Context/), a simple Node.js Express application
-was created. This tutorial will use the monitor page to watch the status of recent requests, and a store page to buy
-products. Once the services are running these pages can be accessed from the following URLs:
+In the previous [tutorial](https://github.com/FIWARE/tutorials.Accessing-Context/), a simple Node.js Express application was created. This tutorial will use the monitor page to watch the status of recent requests, and a store page to buy products. Once the services are running these pages can be accessed from the following URLs:
 
 #### Event Monitor
 
 The event monitor can be found at: `http://localhost:3000/app/monitor`
 
-![FIWARE Monitor](https://fiware.github.io/tutorials.Subscriptions/img/monitor.png)
+![FIWARE Monitor](https://github.com/AliIbnIbrahim/tutorials.Subscriptions/blob/master/images/monitor.png)
 
 #### Store 002
 
 Store002 can be found at: `http://localhost:3000/app/store/urn:ngsi-ld:Store:002`
 
-![Store](https://fiware.github.io/tutorials.Subscriptions/img/store2.png)
+![Store](https://github.com/AliIbnIbrahim/tutorials.Subscriptions/blob/master/images/store2.png)
 
 # Architecture
 
-This application will make use of only one FIWARE component - the
-[Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/). Usage of the Orion Context Broker is sufficient
-for an application to qualify as _“Powered by FIWARE”_.
+This application will make use of only one FIWARE component - the [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/). Usage of the Orion Context Broker is sufficient for an application to qualify as _“Powered by FIWARE”_.
 
-Currently, the Orion Context Broker relies on open source [MongoDB](https://www.mongodb.com/) technology to keep
-persistence of the context data it holds. To request context data from external sources, a simple **Context Provider
-NGSI proxy** has also been added. To visualize and interact with the Context we will add a simple Express **Frontend**
-application
+Currently, the Orion Context Broker relies on open source [MongoDB](https://www.mongodb.com/) technology to keep persistence of the context data it holds. To request context data from external sources, a simple **Context Provider NGSI proxy** has also been added. To visualize and interact with the Context we will add a simple Express **Frontend** application
 
 Therefore, the architecture will consist of four elements:
-
--   The [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/) which will receive requests using
-    [NGSI-v2](https://fiware.github.io/specifications/OpenAPI/ngsiv2)
+-   The [Orion Context Broker](https://fiware-orion.readthedocs.io/en/latest/) which will receive requests using [NGSI-v2](https://fiware.github.io/specifications/OpenAPI/ngsiv2)
 -   The underlying [MongoDB](https://www.mongodb.com/) database:
-    -   Used by the Orion Context Broker to hold context data information such as data entities, subscriptions and
-        registrations
+    -   Used by the Orion Context Broker to hold context data information such as data entities, subscriptions and registrations
 -   The **Context Provider NGSI proxy** which will:
     -   receive requests using [NGSI-v2](https://fiware.github.io/specifications/OpenAPI/ngsiv2)
     -   makes requests to publicly available data sources using their own APIs in a proprietary format
-    -   returns context data back to the Orion Context Broker in
-        [NGSI-v2](https://fiware.github.io/specifications/OpenAPI/ngsiv2) format.
+    -   returns context data back to the Orion Context Broker in [NGSI-v2](https://fiware.github.io/specifications/OpenAPI/ngsiv2) format.
 -   The **Stock Management Frontend** which will:
     -   Display store information
     -   Show which products can be bought at each store
@@ -117,7 +106,7 @@ Therefore, the architecture will consist of four elements:
 Since all interactions between the elements are initiated by HTTP requests, the entities can be containerized and run
 from exposed ports.
 
-![](https://fiware.github.io/tutorials.Subscriptions/img/architecture.png)
+![](https://github.com/AliIbnIbrahim/tutorials.Subscriptions/blob/master/images/architecture.png)
 
 The necessary configuration information can be seen in the services section of the associated `docker-compose.yml` file.
 It has been described in a [previous tutorial](https://github.com/FIWARE/tutorials.Context-Providers/)
@@ -126,18 +115,13 @@ It has been described in a [previous tutorial](https://github.com/FIWARE/tutoria
 
 ## Docker
 
-To keep things simple both components will be run using [Docker](https://www.docker.com). **Docker** is a container
-technology which allows to different components isolated into their respective environments.
+To keep things simple both components will be run using [Docker](https://www.docker.com). **Docker** is a container technology which allows to different components isolated into their respective environments.
 
 -   To install Docker on Windows follow the instructions [here](https://docs.docker.com/docker-for-windows/)
 -   To install Docker on Mac follow the instructions [here](https://docs.docker.com/docker-for-mac/)
 -   To install Docker on Linux follow the instructions [here](https://docs.docker.com/install/)
 
-**Docker Compose** is a tool for defining and running multi-container Docker applications. A
-[YAML file](https://raw.githubusercontent.com/Fiware/tutorials.Entity-Relationships/master/docker-compose.yml) is used
-configure the required services for the application. This means all container services can be brought up in a single
-command. Docker Compose is installed by default as part of Docker for Windows and Docker for Mac, however Linux users
-will need to follow the instructions found [here](https://docs.docker.com/compose/install/)
+**Docker Compose** is a tool for defining and running multi-container Docker applications. A [YAML file](https://raw.githubusercontent.com/Fiware/tutorials.Entity-Relationships/master/docker-compose.yml) is used configure the required services for the application. This means all container services can be brought up in a single command. Docker Compose is installed by default as part of Docker for Windows and Docker for Mac, however Linux users will need to follow the instructions found [here](https://docs.docker.com/compose/install/)
 
 You can check your current **Docker** and **Docker Compose** versions using the following commands:
 
@@ -149,10 +133,9 @@ docker version
 Please ensure that you are using Docker version 20.10 or higher and Docker Compose 1.29 or higher and upgrade if
 necessary.
 
-## Cygwin
+## Docker on Windows
 
-We will start up our services using a simple bash script. Windows users should download [cygwin](http://www.cygwin.com/)
-to provide a command-line functionality similar to a Linux distribution on Windows.
+We will start up our services using a simple bash script. Windows users should download [WSL2](https://ubuntu.com/tutorials/install-ubuntu-on-wsl2-on-windows-11-with-gui-support#1-overview) to provide a command-line functionality.
 
 # Start Up
 
@@ -167,8 +150,7 @@ git checkout NGSI-v2
 ./services create; ./services start;
 ```
 
-This command will also import seed data from the previous
-[Stock Management example](https://github.com/FIWARE/tutorials.Context-Providers) on startup.
+This command will also import seed data from the previous [Stock Management example](https://github.com/FIWARE/tutorials.Context-Providers) on startup.
 
 > :information_source: **Note:** If you want to clean up and start over again you can do so with the following command:
 >
@@ -178,8 +160,7 @@ This command will also import seed data from the previous
 
 # Using Subscriptions
 
-To follow the tutorial correctly please ensure you have the follow pages available on tabs in your browser before you
-enter any cUrl commands.
+To follow the tutorial correctly please ensure you have the follow pages available on tabs in your browser before you enter any cUrl commands.
 
 #### Event Monitor
 
@@ -194,13 +175,9 @@ The stores can be found at:
 
 ## Setting up a simple Subscription
 
-Within the stock management example, imagine that the regional manager of the company wants to alter the price of a
-product. The new price should immediately be reflected at the till in all stores within the system. It would be possible
-to set up the system so that it was constantly polling for new information, however prices are not changed very
-frequently so this would be a waste of resources and create a lot of unnecessary data traffic.
+Within the stock management example, imagine that the regional manager of the company wants to alter the price of a product. The new price should immediately be reflected at the till in all stores within the system. It would be possible to set up the system so that it was constantly polling for new information, however prices are not changed very frequently so this would be a waste of resources and create a lot of unnecessary data traffic.
 
-The alternative is to create a subscription which will POST a payload to a "well-known" URL whenever a price has
-changed. A new subscription can be added by making a POST request to the `/v2/subscriptions/` endpoint as shown below:
+The alternative is to create a subscription which will POST a payload to a "well-known" URL whenever a price has changed. A new subscription can be added by making a POST request to the `/v2/subscriptions/` endpoint as shown below:
 
 #### :one: Request:
 
@@ -224,19 +201,14 @@ curl -iX POST \
 }'
 ```
 
-The body of the POST request consists of two parts, the `subject` section of the request (consisting of `entities` and
-`conditions`)states that the subscription will be fired whenever the `price` attribute of any **Product** entity is
-altered. The notification section of the body states that once the conditions of the subscription have been met, a POST
-request containing all affected **Product** entities will be sent to the URL
-`http://tutorial:3000/subscription/price-change` which is handled by the stock management frontend application.
+The body of the POST request consists of two parts, the `subject` section of the request (consisting of `entities` and `conditions`)states that the subscription will be fired whenever the `price` attribute of any **Product** entity is altered. The notification section of the body states that once the conditions of the subscription have been met, a POST request containing all affected **Product** entities will be sent to the URL `http://tutorial:3000/subscription/price-change` which is handled by the stock management frontend application.
 
-For a first run, when the subscription is created, the Orion Context Broker runs the `condition` test, and since it has
-not been run before makes the assumption that all products have been changed. Therefore a request is sent to
-`subscription/price-change` immediately as shown:
+For a first run, when the subscription is created, the Orion Context Broker runs the `condition` test, and since it has not been run before makes the assumption that all products have been changed. Therefore a request is sent to `subscription/price-change` immediately as shown:
 
 #### `http://localhost:3000/app/monitor`
 
 ![](https://fiware.github.io/tutorials.Subscriptions/img/products-subscription.png)
+
 
 Code within the Stock Management frontend application handles received the POST request as shown:
 
@@ -260,8 +232,7 @@ function broadcastEvents(req, item, types) {
 
 This business logic emits socket I/O events to any registered parties (such as the cash till)
 
-The cash till has been set to reload if is receives an event - however in this case the prices have not changed yet, so
-the product prices remain the same - for example a bottle of beer remains at 0.99€
+The cash till has been set to reload if is receives an event - however in this case the prices have not changed yet, so the product prices remain the same - for example a bottle of beer remains at 0.99€
 
 #### `http://localhost:3000/app/store/urn:ngsi-ld:Store:002`
 

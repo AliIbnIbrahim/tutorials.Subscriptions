@@ -54,21 +54,13 @@ commands. The cUrl commands are also available as
 >
 > — Dorothy Kilgallen (The Voice Of Broadway)
 
-Within the FIWARE platform, an entity represents the state of a physical or conceptual object which exists in the real
-world. Every smart solution needs to know the current state of these object at any given moment in time.
+Within the FIWARE platform, an entity represents the state of a physical or conceptual object which exists in the real world. Every smart solution needs to know the current state of these object at any given moment in time.
 
-The context of each of these entities is constantly changing. For example, within the stock management example, the
-context will change as new stores open up, products are sold, prices change and so on. For a smart solution based on IoT
-sensor data, this issue is even more pressing as the system will constantly be reacting to changes in the real world.
+The context of each of these entities is constantly changing. For example, within the stock management example, the context will change as new stores open up, products are sold, prices change and so on. For a smart solution based on IoT sensor data, this issue is even more pressing as the system will constantly be reacting to changes in the real world.
 
-Until now all the operations we have used to change the state of the system have been **synchronous** - changes have
-been made by directly by a user or application and they have been informed of the result. The Orion Context Broker
-offers also an **asynchronous** notification mechanism - applications can subscribe to changes of context information so
-that they can be informed when something happens. This means the application does not need to continuously poll or
-repeat query requests.
+Until now all the operations we have used to change the state of the system have been **synchronous** - changes have been made by directly by a user or application and they have been informed of the result. The Orion Context Broker offers also an **asynchronous** notification mechanism - applications can subscribe to changes of context information so that they can be informed when something happens. This means the application does not need to continuously poll or repeat query requests.
 
-Use of the subscription mechanism will therefore reduce both the volume of requests and amount of data being passed
-between components within the system. This reduction in network traffic will improve the overall responsiveness.
+Use of the subscription mechanism will therefore reduce both the volume of requests and amount of data being passed between components within the system. This reduction in network traffic will improve the overall responsiveness.
 
 ## Entities within a stock management system
 

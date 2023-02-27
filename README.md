@@ -143,7 +143,7 @@ All services can be initialized from the command-line by running the bash script
 clone the repository and create the necessary images by running the commands as shown:
 
 ```console
-git clone https://github.com/FIWARE/tutorials.Subscriptions.git
+git clone https://github.com/AliIbnIbahim/tutorials.Subscriptions.git
 cd tutorials.Subscriptions
 git checkout NGSI-v2
 
